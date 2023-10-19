@@ -280,13 +280,13 @@ const CONNECTION_STATE = {
  */
 const Key_Ble = class extends Event_Emitter {
 
-	constructor({address, user_id=255, user_key, auto_disconnect_time=0, status_update_time}) {
+	constructor({address, user_id=255, user_key, auto_disconnect_time=0, status_update_time=0}) {
 		super()
 		this.address = canonicalize_mac_address(address);
 		this.user_id = user_id;
 		this.user_key = convert_to_uint8array(user_key);
-		this.auto_disconnect_time = auto_disconnect_time;
-		this.set_status_update_time(status_update_time);
+		this.auto_disconnect_time = 0;
+		this.set_status_update_time(0);
 		this.received_message_fragments = [];
 		this.local_security_counter = 1;
 		this.remote_security_counter = 0;
@@ -294,7 +294,7 @@ const Key_Ble = class extends Event_Emitter {
 		this.lock_status_id = null;
 	}
 
-	set_status_update_time(status_update_time=0) {
+	set_status_update_time(status_update_time) {
 		this.status_update_time = status_update_time;
 		this.set_status_update_timer();
 	}
