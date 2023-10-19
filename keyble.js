@@ -582,7 +582,7 @@ const Key_Ble = class extends Event_Emitter {
 		await this.send_message(Status_Request_Message.create({
 			date: (new Date()),
 		}));
-		await this.await_event('status_update');
+		return this.await_event('status_update');
 	}
 
 	async ensure_disconnected() {
