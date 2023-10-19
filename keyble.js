@@ -280,7 +280,7 @@ const CONNECTION_STATE = {
  */
 const Key_Ble = class extends Event_Emitter {
 
-	constructor({address, user_id=255, user_key, auto_disconnect_time=15.0, status_update_time}) {
+	constructor({address, user_id=255, user_key, auto_disconnect_time=0, status_update_time}) {
 		super()
 		this.address = canonicalize_mac_address(address);
 		this.user_id = user_id;
@@ -294,7 +294,7 @@ const Key_Ble = class extends Event_Emitter {
 		this.lock_status_id = null;
 	}
 
-	set_status_update_time(status_update_time=600.0) {
+	set_status_update_time(status_update_time=0) {
 		this.status_update_time = status_update_time;
 		this.set_status_update_timer();
 	}
