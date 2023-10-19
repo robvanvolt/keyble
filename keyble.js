@@ -280,13 +280,13 @@ const CONNECTION_STATE = {
  */
 const Key_Ble = class extends Event_Emitter {
 
-	constructor({address, user_id=255, user_key, auto_disconnect_time=0, status_update_time=0}) {
+	constructor({address, user_id=255, user_key, auto_disconnect_time=99999999999, status_update_time=99999999999}) {
 		super()
 		this.address = canonicalize_mac_address(address);
 		this.user_id = user_id;
 		this.user_key = convert_to_uint8array(user_key);
-		this.auto_disconnect_time = 0;
-		this.set_status_update_time(0);
+		this.auto_disconnect_time = 99999999999;
+		this.set_status_update_time(99999999999);
 		this.received_message_fragments = [];
 		this.local_security_counter = 1;
 		this.remote_security_counter = 0;
